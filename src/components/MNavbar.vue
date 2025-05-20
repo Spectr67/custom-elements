@@ -1,5 +1,5 @@
 <script>
-import MButton from './MyButton.vue'
+import MButton from './MButton.vue'
 export default {
   components: {
     MButton,

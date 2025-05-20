@@ -1,36 +1,41 @@
 <script>
-import MButton from './components/MyButton.vue'
-import Navbar from './components/Navbar.vue'
+import MButton from './components/MButton.vue'
+import MNavbar from './components/MNavbar.vue'
 import MForm from './components/MForm.vue'
+import MFAB from './components/MFAB.vue'
 
 export default {
   components: {
     MButton,
-    Navbar,
+    MNavbar,
     MForm,
+    MFAB,
   },
   data() {
     return {
-      showForm: false,
+      hasNewMessage: false,
+      toggleFAB: false,
     }
-  },
-  methods: {
-    toggleForm() {
-      this.showForm = !this.showForm
-    },
   },
 }
 </script>
 
 <template>
-  <Navbar />
+  <!-- <MNavbar /> -->
   <section>
     <article>
-      <MButton @click="toggleForm" caption="Логин" class="yo" />
+      <MButton @click="hasNewMessage = !hasNewMessage" caption="New Message" />
+      <MButton @click="toggleFAB = !toggleFAB" caption="toggleFAB" />
+    </article>
+    <article>
+      <MFAB icon="home" :is-pulsing="hasNewMessage" :is-show="toggleFAB" />
+    </article>
+    <article>
+      {{ hasNewMessage }}
     </article>
   </section>
 
-  <MForm v-if="showForm" @close="hideForm" />
+  <!-- <MForm v-if="showForm" @close="hideForm" /> -->
 </template>
 
 <style scoped>

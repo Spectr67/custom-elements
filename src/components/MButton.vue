@@ -10,3 +10,9 @@ export default {
     <span>{{ caption }}</span>
   </a>
 </template>
+
+<style scoped>
+a {
+  margin: 0 5px;
+}
+</style>
