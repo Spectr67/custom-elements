@@ -1,43 +1,43 @@
 <script>
 import MButton from './components/MButton.vue'
-import MNavbar from './components/MNavbar.vue'
-import MForm from './components/MForm.vue'
-import MFAB from './components/MFAB.vue'
 import MSwitch from './components/MSwitch.vue'
+import MFAB from './components/MFAB.vue'
 
 export default {
-  components: {
-    MButton,
-    MNavbar,
-    MForm,
-    MFAB,
-    MSwitch,
-  },
+  components: { MButton, MSwitch, MFAB },
+
   data() {
     return {
-      hasNewMessage: false,
-      toggleFAB: false,
+      // isPulsingFAB: false,
+      // isShowFAB: false,
+      isDarkMode: true,
     }
   },
 }
 </script>
 
 <template>
-  <!-- <MNavbar /> -->
+  <!-- 
+  <MButton @click="isShowFAB = !isShowFAB" caption="toggleFAB" /> -->
   <section>
     <article>
-      <MButton @click="hasNewMessage = !hasNewMessage" caption="New Message" />
-      <MButton @click="toggleFAB = !toggleFAB" caption="toggleFAB" />
+      <MButton @click="isDarkMode = !isDarkMode" caption="isDarkMode" />
     </article>
     <article>
-      <MFAB icon="home" :is-pulsing="hasNewMessage" :is-show="toggleFAB" />
+      <span>DarkMode:</span>
+      <!-- <MSwitch :is-checked="isDarkMode" @toggle="isDarkMode = $event" /> -->
+      <!-- <MSwitch
+        :model-value="isDarkMode"
+        @update:model-value="isDarkMode = $event"
+      /> -->
+      <MSwitch v-model="isDarkMode" :is-disabled="false" />
     </article>
+    <article>{{ isDarkMode }}</article>
     <article>
-      {{ hasNewMessage }}
+      <!-- <MFAB icon="home" :is-pulsing="isPulsingFAB" :is-show="isShowFAB" /> -->
     </article>
+    <article></article>
   </section>
-  <MSwitch />
-  <!-- <MForm v-if="showForm" @close="hideForm" /> -->
 </template>
 
 <style scoped>
