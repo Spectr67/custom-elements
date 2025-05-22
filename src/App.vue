@@ -3,6 +3,7 @@ import MButton from './components/MButton.vue'
 import MNavbar from './components/MNavbar.vue'
 import MForm from './components/MForm.vue'
 import MFAB from './components/MFAB.vue'
+import MSwitch from './components/MSwitch.vue'
 
 export default {
   components: {
@@ -10,6 +11,7 @@ export default {
     MNavbar,
     MForm,
     MFAB,
+    MSwitch,
   },
   data() {
     return {
@@ -34,7 +36,7 @@ export default {
       {{ hasNewMessage }}
     </article>
   </section>
-
+  <MSwitch />
   <!-- <MForm v-if="showForm" @close="hideForm" /> -->
 </template>
 
