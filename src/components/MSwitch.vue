@@ -30,5 +30,3 @@ export default {
   padding: 0 5px;
 }
 </style>
-
-кнопка состояние пульса свитч + селект

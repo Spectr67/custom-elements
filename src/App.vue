@@ -9,43 +9,37 @@ export default {
 
   data() {
     return {
-      // isPulsingFAB: false,
-      // isShowFAB: false,
-      isDarkMode: true,
-      applesCounter: 0,
+      isPulsingFAB: false,
+      isShowFAB: false,
+      isDisabledSwitch: false,
+      cars: ['Ferrari', 'Lamborghini', 'Porsche'],
+      selectedCars: [''],
     }
-  },
-  computed: {
-    isWhiteMode() {
-      return !this.isDarkMode
-    },
-
-    isApplesMorethan() {
-      return this.applesCounter >= 3
-    },
   },
 }
 </script>
 
 <template>
-  <!-- 
-  <MButton @click="isShowFAB = !isShowFAB" caption="toggleFAB" /> -->
   <section>
     <article>
-      <MButton @click="isDarkMode = !isDarkMode" caption="isDarkMode" />
+      <MButton
+        @click="isDisabledSwitch = !isDisabledSwitch"
+        caption="isDisabledSwitch"
+      />
     </article>
+    <article>{{ isDisabledSwitch }}</article>
     <article>
-      <span>DarkMode:</span>
-      <!-- <MSwitch :is-checked="isDarkMode" @toggle="isDarkMode = $event" /> -->
-      <!-- <MSwitch
-        :model-value="isDarkMode"
-        @update:model-value="isDarkMode = $event"
-      /> -->
-      <MSwitch v-model="isDarkMode" :is-disabled="false" />
+      <span>isPulsingFAB:</span>
+      <MSwitch v-model="isPulsingFAB" :is-disabled="isDisabledSwitch" />
     </article>
-    <article>{{ isDarkMode }}</article>
+    <article>{{ isPulsingFAB }}</article>
     <article>
-      <MFAB icon="home" :is-pulsing="isPulsingFAB" :is-show="isDarkMode" />
+      <span>isShowFAB:</span>
+      <MSwitch v-model="isShowFAB" :is-disabled="isDisabledSwitch" />
+    </article>
+    <article>{{ isShowFAB }}</article>
+    <article>
+      <MFAB icon="home" :is-pulsing="isPulsingFAB" :is-show="isShowFAB" />
     </article>
     <article>
       <MSelect />
