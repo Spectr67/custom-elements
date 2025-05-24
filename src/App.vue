@@ -8,6 +8,6 @@ export default {
 </script>
 <template>
   <div>
-    <TestContainerA />
+    <TestContainerB />
   </div>
 </template>
