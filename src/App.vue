@@ -1,17 +1,18 @@
 <script>
 import TestContainerA from './TestContainerA.vue'
-import TestContainerB from './TestContainerB.vue'
+import TestContainerC from './TestContainerC.vue'
 
 export default {
-  components: { TestContainerA, TestContainerB },
+  components: { TestContainerA, TestContainerC },
 }
 </script>
 <template>
-  <div>
-    <TestContainerB />
-  </div>
-
+  <!--
   <div>
     <TestContainerA />
+  </div> -->
+
+  <div>
+    <TestContainerC />
   </div>
 </template>

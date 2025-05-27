@@ -1,12 +1,10 @@
 <script>
 export default {
-  props: ['name', 'value', 'selectedValue'],
+  props: ['name', 'value', 'selected'],
+
+  emits: ['update:selected'],
 
   computed: {
-    isChecked() {
-      return this.selectedValue === this.value
-    },
-
     capitalCasedValue() {
       return this.value[0].toUpperCase() + this.value.slice(1)
     },
@@ -15,7 +13,6 @@ export default {
 </script>
 
 <template>
-  {{ isChecked }}
   <div>
     <label>
       <input
@@ -23,8 +20,8 @@ export default {
         type="radio"
         :name
         :value
-        :checked="isChecked"
-        @change="$emit('update:selectedValue', value)"
+        :checked="selected === value"
+        @change="$emit('update:selected', $event.target.value)"
       />
       <span>{{ capitalCasedValue }}</span>
     </label>
