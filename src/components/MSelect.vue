@@ -4,27 +4,30 @@ export default {
     const elems = this.$refs.select
     M.FormSelect.init(elems, {})
   },
+  props: ['cars'],
+
+  emits: ['choisen-car'],
 
   data() {
     return {
-      YourCarBrand: [],
+      choisedCar: [],
     }
+  },
+  methods: {
+    onChange(event) {
+      this.choisedCar = Array.from(event.target.selectedOptions).map(
+        o => o.value
+      )
+      this.$emit('choisen-car', this.choisedCar)
+    },
   },
 }
 </script>
 
 <template>
-  <span>Selected: {{ YourCarBrand.join(', ') }}</span>
+  <span>Selected: {{ choisedCar.join(', ') }}</span>
   <div class="input-field col s12">
-    <select
-      multiple
-      ref="select"
-      @change="
-        YourCarBrand = Array.from($event.target.selectedOptions).map(
-          o => o.value
-        )
-      "
-    >
+    <select multiple ref="select" @change="onChange">
       <option value="" disabled selected>Choose your option</option>
       <option value="BMW">BMW</option>
       <option value="Mercedess">Mercedess</option>

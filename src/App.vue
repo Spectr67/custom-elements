@@ -10,4 +10,8 @@ export default {
   <div>
     <TestContainerB />
   </div>
+
+  <div>
+    <TestContainerA />
+  </div>
 </template>

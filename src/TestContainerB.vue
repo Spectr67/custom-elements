@@ -16,9 +16,14 @@ export default {
 <template>
   <section>
     <article>
-      <MRadio name="color" value="red" :selectedValue="selectedColor" />
-      <MRadio name="color" value="red" :selectedValue="selectedColor" />
-      <MRadio name="color" value="red" :selectedValue="selectedColor" />
+      <MRadio
+        v-for="color in colors"
+        :key="color"
+        name="color"
+        :value="color"
+        :selectedValue="selectedColor"
+        @update:selectedValue="selectedColor = $event"
+      />
     </article>
     <article>
       {{ selectedColor }}

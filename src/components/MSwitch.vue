@@ -5,7 +5,7 @@ import MSelect from './MSelect.vue'
 export default {
   components: { MButton, MSelect },
 
-  props: ['modelValue'],
+  props: ['modelValue', 'isDisabled'],
 
   emits: ['update:model-value'],
 }
@@ -15,6 +15,8 @@ export default {
   <div class="switch">
     <label>
       <input
+        isDisabledSwitch="input"
+        :disabled="isDisabled"
         type="checkbox"
         v-bind:checked="modelValue"
         @change="$emit('update:model-value', $event.target.checked)"

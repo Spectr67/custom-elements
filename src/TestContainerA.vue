@@ -10,10 +10,10 @@ export default {
   data() {
     return {
       isPulsingFAB: false,
-      isShowFAB: false,
+      isShowFAB: true,
       isDisabledSwitch: false,
       cars: ['Ferrari', 'Lamborghini', 'Porsche'],
-      selectedCars: [''],
+      selectedCars: [],
     }
   },
 }
@@ -41,8 +41,9 @@ export default {
     <article>
       <MFAB icon="home" :is-pulsing="isPulsingFAB" :is-show="isShowFAB" />
     </article>
+    <article>{{ selectedCars }}</article>
     <article>
-      <MSelect />
+      <MSelect :cars="cars" @choisen-car="selectedCars = $event" />
     </article>
   </section>
 </template>

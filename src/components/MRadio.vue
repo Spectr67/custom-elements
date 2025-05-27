@@ -18,7 +18,14 @@ export default {
   {{ isChecked }}
   <div>
     <label>
-      <input class="with-gap" type="radio" :name :value :checked="isChecked" />
+      <input
+        class="with-gap"
+        type="radio"
+        :name
+        :value
+        :checked="isChecked"
+        @change="$emit('update:selectedValue', value)"
+      />
       <span>{{ capitalCasedValue }}</span>
     </label>
   </div>
