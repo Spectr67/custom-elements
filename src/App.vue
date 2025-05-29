@@ -7,12 +7,11 @@ export default {
 }
 </script>
 <template>
-  <!--
   <div>
     <TestContainerA />
-  </div> -->
-
-  <div>
-    <TestContainerC />
   </div>
+
+  <!-- <div>
+    <TestContainerC />
+  </div> -->
 </template>

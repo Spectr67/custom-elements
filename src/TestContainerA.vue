@@ -3,9 +3,10 @@ import MButton from './components/MButton.vue'
 import MSwitch from './components/MSwitch.vue'
 import MFAB from './components/MFAB.vue'
 import MSelect from './components/MSelect.vue'
+import MInput from './components/MInput.vue'
 
 export default {
-  components: { MButton, MSwitch, MFAB, MSelect },
+  components: { MButton, MSwitch, MFAB, MSelect, MInput },
 
   data() {
     return {
@@ -14,6 +15,7 @@ export default {
       isDisabledSwitch: false,
       cars: ['Ferrari', 'Lamborghini', 'Porsche'],
       selectedCars: [],
+      firstName: '',
     }
   },
 }
@@ -44,6 +46,10 @@ export default {
     <article>{{ selectedCars }}</article>
     <article>
       <MSelect :cars="cars" @choisen-car="selectedCars = $event" />
+    </article>
+    <article>{{ firstName }}</article>
+    <article>
+      <MInput @input="firstName = $event.target.value" />
     </article>
   </section>
 </template>
