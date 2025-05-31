@@ -26,6 +26,12 @@ export default {
       ],
     }
   },
+
+  watch: {
+    firstName(newValue) {
+      console.log(newValue)
+    },
+  },
 }
 </script>
 
@@ -57,10 +63,10 @@ export default {
     </article> -->
     <article>{{ firstName }}</article>
     <article>
-      <MInput v-model="firstName" />
+      <MInput v-model.trim="firstName" caption="First Name" />
     </article>
     <article>
-      <MInput v-model="firstName" />
+      <MInput v-model="firstName" caption="First Name" />
     </article>
     <article>
       <MLinks :links="links" />

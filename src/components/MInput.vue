@@ -1,16 +1,15 @@
 <script>
+const randId = () => 'id_' + Math.trunc(Math.random() * 0xff ** 4).toString(16)
+
 export default {
-  props: ['modelValue'],
+  props: ['modelValue', 'caption'],
+
   emits: ['update:modelValue'],
+
   data() {
-    return {}
-  },
-  methods: {
-    handleInput(event) {
-      const value = event.target.value
-      if (value.trim() === '') return
-      this.$emit('update:modelValue', value)
-    },
+    return {
+      instanceId: randId(),
+    }
   },
 }
 </script>
@@ -20,12 +19,14 @@ export default {
     <div class="input-field col s6">
       <input
         :value="modelValue"
-        @input="handleInput"
-        id="first_name2"
+        @input="$emit('update:modelValue', $event.target.value)"
         type="text"
         class="validate"
+        :id="instanceId"
       />
-      <label class="active" for="first_name2">First Name</label>
+      <label :class="{ active: modelValue !== '' }" :for="instanceId">
+        {{ caption }}
+      </label>
     </div>
   </div>
 </template>
@@ -35,5 +36,3 @@ export default {
   width: 50%;
 }
 </style>
-
-connections links список
