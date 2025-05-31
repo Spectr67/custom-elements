@@ -4,9 +4,10 @@ import MSwitch from './components/MSwitch.vue'
 import MFAB from './components/MFAB.vue'
 import MSelect from './components/MSelect.vue'
 import MInput from './components/MInput.vue'
+import MLinks from './components/MLinks.vue'
 
 export default {
-  components: { MButton, MSwitch, MFAB, MSelect, MInput },
+  components: { MButton, MSwitch, MFAB, MSelect, MInput, MLinks },
 
   data() {
     return {
@@ -16,6 +17,13 @@ export default {
       cars: ['Ferrari', 'Lamborghini', 'Porsche'],
       selectedCars: [],
       firstName: '',
+      links: [
+        'https://www.google.com/',
+        'https://www.google.com/maps',
+        'https://www.google.com/images',
+        'https://mail.google.com/',
+        'https://drive.google.com/',
+      ],
     }
   },
 }
@@ -23,7 +31,7 @@ export default {
 
 <template>
   <section>
-    <article>
+    <!-- <article>
       <MButton
         @click="isDisabledSwitch = !isDisabledSwitch"
         caption="isDisabledSwitch"
@@ -46,10 +54,16 @@ export default {
     <article>{{ selectedCars }}</article>
     <article>
       <MSelect :cars="cars" @choisen-car="selectedCars = $event" />
-    </article>
+    </article> -->
     <article>{{ firstName }}</article>
     <article>
-      <MInput @input="firstName = $event.target.value" />
+      <MInput v-model="firstName" />
+    </article>
+    <article>
+      <MInput v-model="firstName" />
+    </article>
+    <article>
+      <MLinks :links="links" />
     </article>
   </section>
 </template>
