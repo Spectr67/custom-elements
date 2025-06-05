@@ -1,10 +1,19 @@
 <script>
 export default {
   props: ['links'],
+
+  emits: ['link-selected'],
+
   data() {
     return {
-      activeIndex: null,
+      selectedLink: null,
     }
+  },
+
+  watch: {
+    selectedLink(newValue) {
+      this.$emit('link-selected', { ...newValue })
+    },
   },
 }
 </script>
@@ -12,14 +21,14 @@ export default {
 <template>
   <div class="collection">
     <a
-      v-for="(item, index) in links"
-      :key="index"
-      :href="item.url"
+      v-for="link in links"
+      :key="link.id"
+      :href="link.url"
       class="collection-item"
-      :class="{ active: activeIndex === index }"
-      @click.prevent=";(activeIndex = index), $emit('link-selected', item)"
+      :class="{ active: selectedLink?.id === link.id }"
+      @click.prevent="selectedLink = link"
     >
-      {{ item.title }}
+      {{ link.title }}
     </a>
   </div>
 </template>

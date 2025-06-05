@@ -19,11 +19,11 @@ export default {
       firstName: '',
       selectedLink: '',
       links: [
-        { title: 'Google', url: 'h' },
-        { title: 'Google Maps', url: 'h' },
-        { title: 'Google Images', url: 'h' },
-        { title: 'Gmail', url: 'h' },
-        { title: 'Google Drive', url: 'h' },
+        { id: 1, title: 'Google', url: 'h' },
+        { id: 2, title: 'Google Maps', url: 'h' },
+        { id: 3, title: 'Google Images', url: 'h' },
+        { id: 4, title: 'Gmail', url: 'h' },
+        { id: 5, title: 'Google Drive', url: 'h' },
       ],
     }
   },
@@ -74,6 +74,9 @@ export default {
     </article>
     <article>
       <MLinks :links="links" @link-selected="selectedLink = $event" />
+    </article>
+    <article>
+      {{ selectedLink }}
     </article>
   </section>
 </template>
