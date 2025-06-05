@@ -17,12 +17,13 @@ export default {
       cars: ['Ferrari', 'Lamborghini', 'Porsche'],
       selectedCars: [],
       firstName: '',
+      selectedLink: '',
       links: [
-        'https://www.google.com/',
-        'https://www.google.com/maps',
-        'https://www.google.com/images',
-        'https://mail.google.com/',
-        'https://drive.google.com/',
+        { title: 'Google', url: 'h' },
+        { title: 'Google Maps', url: 'h' },
+        { title: 'Google Images', url: 'h' },
+        { title: 'Gmail', url: 'h' },
+        { title: 'Google Drive', url: 'h' },
       ],
     }
   },
@@ -69,7 +70,10 @@ export default {
       <MInput v-model="firstName" caption="First Name" />
     </article>
     <article>
-      <MLinks :links="links" />
+      {{ selectedLink.title }}
+    </article>
+    <article>
+      <MLinks :links="links" @link-selected="selectedLink = $event" />
     </article>
   </section>
 </template>

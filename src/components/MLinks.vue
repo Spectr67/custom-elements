@@ -1,6 +1,11 @@
 <script>
 export default {
   props: ['links'],
+  data() {
+    return {
+      activeIndex: null,
+    }
+  },
 }
 </script>
 
@@ -9,10 +14,12 @@ export default {
     <a
       v-for="(item, index) in links"
       :key="index"
-      :href="item"
+      :href="item.url"
       class="collection-item"
+      :class="{ active: activeIndex === index }"
+      @click.prevent=";(activeIndex = index), $emit('link-selected', item)"
     >
-      {{ item }}
+      {{ item.title }}
     </a>
   </div>
 </template>
