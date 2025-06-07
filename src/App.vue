@@ -10,6 +10,6 @@ export default {
 
 <template>
   <div>
-    <TestContainerD />
+    <TestContainerA />
   </div>
 </template>

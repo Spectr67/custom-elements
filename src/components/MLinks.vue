@@ -1,18 +1,18 @@
 <script>
 export default {
-  props: ['links'],
+  props: ['links', 'modelValue'],
 
-  emits: ['link-selected'],
+  emits: ['update:modelValue'],
 
   data() {
     return {
-      selectedLink: null,
+      selectedLink: this.modelValue || null,
     }
   },
 
   watch: {
     selectedLink(newValue) {
-      this.$emit('link-selected', { ...newValue })
+      this.$emit('update:modelValue', { ...newValue })
     },
   },
 }

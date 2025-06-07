@@ -73,7 +73,7 @@ export default {
       {{ selectedLink.title }}
     </article>
     <article>
-      <MLinks :links="links" @link-selected="selectedLink = $event" />
+      <MLinks :links="links" v-model="selectedLink" />
     </article>
     <article>
       {{ selectedLink }}
