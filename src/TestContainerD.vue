@@ -8,25 +8,51 @@ export default {
     return {
       posts: [
         {
+          headerIcon: 'filter_drama',
           id: 1,
-          tille: 'First',
-          titleIcon: 'filter_drama',
+          title: 'First',
           text: 'First Lorem ipsum dolor sit amet!!!',
         },
         {
+          headerIcon: 'place',
           id: 2,
-          tille: 'Second',
-          titleIcon: 'place',
+          title: 'Second',
           text: 'Second Lorem ipsum dolor sit amet!!!',
         },
         {
+          headerIcon: 'whatshot',
           id: 3,
-          tille: 'Third',
-          titleIcon: 'whatshot',
+          title: 'Third',
           text: 'Third Lorem ipsum dolor sit amet!!!',
         },
       ],
+      users: [
+        {
+          headerIcon: 'person',
+          id: 1,
+          nick: 'Alex',
+          email: 'alex@google.com',
+          passwd: 'qwerty',
+          balance: 333,
+          isBanned: false,
+        },
+        {
+          headerIcon: 'person',
+          id: 2,
+          nick: 'Xela',
+          email: 'xela@google.com',
+          passwd: 'ytrewq ',
+          balance: 222,
+          isBanned: false,
+        },
+      ],
     }
+  },
+
+  methods: {
+    foo(e) {
+      console.log('>>', e)
+    },
   },
 }
 </script>
@@ -34,22 +60,49 @@ export default {
 <template>
   <section>
     <article>
-      <MAccordion :posts="posts">
-        <template #default="{ message, age, qqq }">
-          <h1>Lorem ipsum dolor sit amet!!!</h1>
-          <h2>{{ message }}</h2>
-          <h3>{{ age }}</h3>
-          <h4>{{ qqq }}</h4>
+      <MAccordion :list="users">
+        <template #header="{ item }">
+          <span>{{ item.nick }}</span>
+        </template>
+        <template #body="{ item, o }">
+          {{ o }}
+          <h1 @click="o += '!'">Пользователь!</h1>
+          <h2>{{ item.email }}</h2>
+          <input
+            :value="item.passwd"
+            @input="item.passwd = $event.target.value"
+          />
+          <input type="range" v-model="item.balance" />
+          <input type="checkbox" v-model="item.isBanned" />
+        </template>
+      </MAccordion>
+    </article>
+    <article>
+      <MAccordion :list="users">
+        <template #header="{ item }">
+          <span>{{ item.nick }}</span>
+        </template>
+        <template #body="{ item }">
+          <h1>Пользователь!</h1>
+          <h2>{{ item.email }}</h2>
+          <input v-model="item.passwd" />
+          <input type="range" v-model="item.balance" />
+          <input type="checkbox" v-model="item.isBanned" />
         </template>
       </MAccordion>
     </article>
 
+    {{ users }}
+
     <article>
-      <MAccordion v-slot="{ message, age, qqq }" :posts="posts">
-        <h1>Lorem ipsum dolor sit amet!!!</h1>
-        <h2>{{ message }}</h2>
-        <h3>{{ age }}</h3>
-        <h4>{{ qqq }}</h4>
+      <MAccordion :list="posts">
+        <template #header="{ item }">
+          <span>{{ item.title }}</span>
+        </template>
+        <template #body="{ item }">
+          <h1>Новость!</h1>
+          <h2>{{ item.text }}</h2>
+        </template>
       </MAccordion>
     </article>
   </section>

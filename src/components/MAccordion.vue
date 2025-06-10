@@ -1,24 +1,48 @@
 <script>
 export default {
-  props: ['posts'],
+  props: ['list'],
 
   mounted() {
     const el = this.$refs.elUl
     const options = { accordion: true }
     M.Collapsible.init(el, options)
   },
+
+  data() {
+    return {
+      o: 'qqq',
+    }
+  },
+
+  watch: {
+    o: {
+      deep: true,
+      handler(newValue) {
+        console.log('>>>>', newValue)
+      },
+    },
+  },
 }
 </script>
 
 <template>
   <ul ref="elUl" class="collapsible">
-    <li v-for="post of posts" :key="post.id">
+    <li v-for="item of list" :key="item.id">
       <div class="collapsible-header">
-        <i class="material-icons">filter_drama</i>First
+        <i class="material-icons">{{ item.headerIcon }}</i>
+        <slot name="header" :item="item"></slot>
       </div>
       <div class="collapsible-body">
-        <slot :message="'hello slot'" :age="42" :qqq="'aaa'"></slot>
+        <slot name="body" :item="item" :o="o"></slot>
       </div>
     </li>
   </ul>
 </template>
+
+<style>
+[type='checkbox'] {
+  position: static !important;
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+</style>
