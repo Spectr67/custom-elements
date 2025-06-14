@@ -7,11 +7,10 @@ export default {
 
   data() {
     return {
-      foodMeals: {
-        breakfast: false,
-        lunch: false,
-        dinner: false,
-      },
+      availableFoodMeals: ['breakfast', 'lunch', 'dinner'],
+
+      selectedFoodMeals: [],
+
       isConfirmed: false,
     }
   },
@@ -20,16 +19,21 @@ export default {
 
 <template>
   <section>
+    <!-- <article>
+      <h1>{{ selectedFoodMeals }}</h1>
+      <input type="checkbox" v-model="selectedFoodMeals" value="aaa" />
+      <input type="checkbox" v-model="selectedFoodMeals" value="bbb" />
+      <input type="checkbox" v-model="selectedFoodMeals" value="ccc" />
+    </article> -->
+
     <article>
-      <h1>
-        {{ isConfirmed }}
-      </h1>
+      <!-- <h1>{{ isConfirmed }}</h1> -->
     </article>
     <article>
-      <MCheckBox v-model="isConfirmed" caption="Я согласен" />
+      <!-- <MCheckBox v-model="isConfirmed" caption="Я согласен" /> -->
     </article>
     <article>
-      <!-- <MCheckBoxes v-model="foodMeals" /> -->
+      <MCheckBoxes :list-availables="availableFoodMeals" />
     </article>
   </section>
 </template>
