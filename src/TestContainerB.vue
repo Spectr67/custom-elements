@@ -1,8 +1,9 @@
 <script>
+import MCheckBox from './components/MCheckBox.vue'
 import MCheckBoxes from './components/MCheckBoxes.vue'
 
 export default {
-  components: { MCheckBoxes },
+  components: { MCheckBoxes, MCheckBox },
 
   data() {
     return {
@@ -11,6 +12,7 @@ export default {
         lunch: false,
         dinner: false,
       },
+      isConfirmed: false,
     }
   },
 }
@@ -19,10 +21,15 @@ export default {
 <template>
   <section>
     <article>
-      {{ foodMeals }}
+      <h1>
+        {{ isConfirmed }}
+      </h1>
     </article>
     <article>
-      <MCheckBoxes v-model="foodMeals" />
+      <MCheckBox v-model="isConfirmed" caption="Я согласен" />
+    </article>
+    <article>
+      <!-- <MCheckBoxes v-model="foodMeals" /> -->
     </article>
   </section>
 </template>

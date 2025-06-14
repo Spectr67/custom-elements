@@ -1,7 +1,8 @@
 <script>
 export default {
-  props: ['name', 'value', 'selected'],
-  emits: ['update:selected'],
+  props: ['modelValue', 'caption'],
+
+  emits: ['update:model-value'],
 }
 </script>
 
@@ -11,12 +12,11 @@ export default {
       <input
         type="checkbox"
         class="filled-in"
-        :name="name"
-        :value="value"
-        :checked="selected"
-        @change="$emit('update:selected', !selected)"
+        :value="caption"
+        :checked="modelValue"
+        @change="$emit('update:model-value', $event.target.checked)"
       />
-      <span>{{ value }}</span>
+      <span>{{ caption }}</span>
     </label>
   </div>
 </template>

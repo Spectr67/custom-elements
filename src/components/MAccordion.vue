@@ -39,7 +39,7 @@ export default {
   </ul>
 </template>
 
-<style>
+<style scoped>
 [type='checkbox'] {
   position: static !important;
   opacity: 1 !important;
