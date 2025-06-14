@@ -1,22 +1,24 @@
 <script>
+import MCheckBox from './MCheckBox.vue'
+
 export default {
-  props: ['modelValue'],
+  components: { MCheckBox },
+  props: ['name', 'values', 'modelValue'],
   emits: ['update:modelValue'],
 }
 </script>
 
 <template>
-  <p v-for="(checked, meal) in modelValue" :key="meal">
-    <label>
-      <input
-        type="checkbox"
-        class="filled-in"
-        :checked="checked"
-        @change="
-          $emit('update:modelValue', { ...modelValue, [meal]: !checked })
-        "
-      />
-      <span>{{ meal }}</span>
-    </label>
-  </p>
+  <div>
+    <MCheckBox
+      v-for="value of modelValue"
+      :key="value"
+      :name="value"
+      :value="value"
+      :selected="modelValue[value]"
+      @update:selected="
+        $emit('update:modelValue', { ...modelValue, [value]: $event })
+      "
+    />
+  </div>
 </template>

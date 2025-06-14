@@ -62,7 +62,7 @@ export default {
     <article>
       <MAccordion :list="users">
         <template #header="{ item }">
-          <span>{{ item.nick }}</span>
+          <span v-on:click="item = {}">{{ item.nick }}</span>
         </template>
         <template #body="{ item, o }">
           {{ o }}
