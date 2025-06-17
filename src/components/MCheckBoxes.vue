@@ -9,9 +9,9 @@ export default {
   emits: ['update:modelValue'],
 
   computed: {
-    selected: {
+    listSelected: {
       get() {
-        return this.modelValue || []
+        return this.modelValue
       },
       set(newSelected) {
         this.$emit('update:modelValue', newSelected)
@@ -27,15 +27,11 @@ export default {
       v-for="item in listAvailables"
       :key="item"
       :caption="item"
-      :model-value="selected.includes(item)"
+      :model-value="listSelected.includes(item)"
       @update:model-value="
-        checked => {
-          if (checked && !selected.includes(item)) {
-            selected = [...selected, item]
-          } else if (!checked) {
-            selected = selected.filter(i => i !== item)
-          }
-        }
+        $event
+          ? listSelected.push(item)
+          : (listSelected = listSelected.filter(a => a !== item))
       "
     />
   </div>

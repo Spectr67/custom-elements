@@ -10,7 +10,7 @@ export default {
 
   data() {
     return {
-      o: 'qqq',
+      o: 1500,
     }
   },
 
@@ -20,6 +20,12 @@ export default {
       handler(newValue) {
         console.log('>>>>', newValue)
       },
+    },
+  },
+
+  methods: {
+    doSomething(x) {
+      this.o = x()
     },
   },
 }
@@ -33,7 +39,7 @@ export default {
         <slot name="header" :item="item"></slot>
       </div>
       <div class="collapsible-body">
-        <slot name="body" :item="item" :o="o"></slot>
+        <slot name="body" :item="item" :o="o" :doSomething="doSomething"></slot>
       </div>
     </li>
   </ul>

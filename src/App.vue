@@ -17,6 +17,6 @@ export default {
 
 <template>
   <div>
-    <TestContainerD />
+    <TestContainerD @qwe="console.log('===>>>', $event)" />
   </div>
 </template>

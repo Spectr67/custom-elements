@@ -4,6 +4,8 @@ import MAccordion from './components/MAccordion.vue'
 export default {
   components: { MAccordion },
 
+  emits: ['qwe'],
+
   data() {
     return {
       posts: [
@@ -62,11 +64,11 @@ export default {
     <article>
       <MAccordion :list="users">
         <template #header="{ item }">
-          <span v-on:click="item += {}">{{ item.nick }}</span>
+          <span>{{ item.nick }}</span>
         </template>
-        <template #body="{ item, o }">
+        <template #body="{ item, o, doSomething }">
           {{ o }}
-          <h1 @click="o += '!'">Пользователь!</h1>
+          <h1 @click="doSomething(Math.random)">Пользователь!</h1>
           <h2>{{ item.email }}</h2>
           <input
             :value="item.passwd"
@@ -82,8 +84,9 @@ export default {
         <template #header="{ item }">
           <span>{{ item.nick }}</span>
         </template>
-        <template #body="{ item }">
-          <h1>Пользователь!</h1>
+        <template #body="{ item, o, doSomething }">
+          {{ o }}
+          <h1 @click="doSomething(Math.random)">Пользователь!</h1>
           <h2>{{ item.email }}</h2>
           <input v-model="item.passwd" />
           <input type="range" v-model="item.balance" />
