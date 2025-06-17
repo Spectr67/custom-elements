@@ -4,29 +4,44 @@ import MCheckBox from './MCheckBox.vue'
 export default {
   components: { MCheckBox },
 
-  props: ['listAvailables'],
+  props: ['listAvailables', 'modelValue'],
 
   emits: ['update:modelValue'],
 
-  data() {
-    return {
-      array: [],
-    }
+  computed: {
+    selected: {
+      get() {
+        return this.modelValue || []
+      },
+      set(newSelected) {
+        this.$emit('update:modelValue', newSelected)
+      },
+    },
   },
 }
 </script>
 
 <template>
-  <h1>{{ array }}</h1>
   <div>
     <MCheckBox
-      v-for="item of listAvailables"
+      v-for="item in listAvailables"
       :key="item"
       :caption="item"
-      :model-value="array.includes(item)"
+      :model-value="selected.includes(item)"
       @update:model-value="
-        $event ? array.push(item) : (array = array.filter(a => a !== item))
+        checked => {
+          if (checked && !selected.includes(item)) {
+            selected = [...selected, item]
+          } else if (!checked) {
+            selected = selected.filter(i => i !== item)
+          }
+        }
       "
     />
   </div>
 </template>
+
+<!-- :selected="modelValue[value]"
+      @update:selected="
+        $emit('update:modelValue', { ...modelValue, [value]: $event })
+      " -->

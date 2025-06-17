@@ -18,6 +18,7 @@ export default {
 </script>
 
 <template>
+  {{ selectedFoodMeals }}
   <section>
     <!-- <article>
       <h1>{{ selectedFoodMeals }}</h1>
@@ -33,7 +34,16 @@ export default {
       <!-- <MCheckBox v-model="isConfirmed" caption="Я согласен" /> -->
     </article>
     <article>
-      <MCheckBoxes :list-availables="availableFoodMeals" />
+      <MCheckBoxes
+        :list-availables="availableFoodMeals"
+        v-model="selectedFoodMeals"
+      />
+    </article>
+    <article>
+      <MCheckBoxes
+        :list-availables="availableFoodMeals"
+        v-model="selectedFoodMeals"
+      />
     </article>
   </section>
 </template>

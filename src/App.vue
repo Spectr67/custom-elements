@@ -17,6 +17,6 @@ export default {
 
 <template>
   <div>
-    <TestContainerB />
+    <TestContainerD />
   </div>
 </template>
