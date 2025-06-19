@@ -1,4 +1,5 @@
 <script>
+import TestContainerE from '../TestContainerE.vue'
 import TestContainerA from './TestContainerA.vue'
 import TestContainerB from './TestContainerB.vue'
 
@@ -11,12 +12,14 @@ export default {
     TestContainerC,
     TestContainerD,
     TestContainerB,
+    TestContainerE,
   },
 }
 </script>
 
 <template>
   <div>
-    <TestContainerD @qwe="console.log('===>>>', $event)" />
+    <!-- <TestContainerD @qwe="console.log('===>>>', $event)" /> -->
+    <TestContainerE />
   </div>
 </template>
