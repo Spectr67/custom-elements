@@ -4,6 +4,11 @@ import MTab from './src/components/MTab.vue'
 
 export default {
   components: { MTabs, MTab },
+  methods: {
+    confirm() {
+      this.confirmedFruit = this.fruit
+    },
+  },
 
   data() {
     return {
@@ -30,15 +35,19 @@ export default {
       tabs: [
         {
           id: 1,
+          title: 'addFruit',
         },
         {
+          title: 'confirmFruit',
           id: 2,
         },
         {
+          title: 'currentFruit',
           id: 3,
         },
       ],
       fruit: '',
+      confirmedFruit: '',
     }
   },
 }
@@ -56,16 +65,18 @@ export default {
     </MTabs> -->
   </article>
   <article>
-    <MTab :list="tabs"
-      >Введите фрукт,подвердите фрукт,текущий фрукт
-      <template #input>
-        <input type="text" />
+    {{ fruit }}
+    <MTab :list="tabs">
+      <template #addFruit>
+        <input v-model="fruit" placeholder="Введите фрукт" type="text" />
       </template>
-      <template #confirm>
-        <button>button</button>
+
+      <template #confirmFruit>
+        <button @click="confirm">Подтвердить</button>
       </template>
-      <template #chosen>
-        <h1>hello</h1>
+
+      <template #currentFruit>
+        <h1>Текущий фрукт: {{ confirmedFruit }}</h1>
       </template>
     </MTab>
   </article>

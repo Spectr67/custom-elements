@@ -3,8 +3,9 @@ export default {
   props: ['list'],
   mounted() {
     const el = this.$refs.tabs
-    const swipeable = { sw: true }
-    requestAnimationFrame(() => M.Tabs.init(el, swipeable))
+    requestAnimationFrame(() => {
+      M.Tabs.init(el, { swipeable: true })
+    })
   },
 }
 </script>
@@ -13,14 +14,19 @@ export default {
   <div class="row">
     <div class="col s12">
       <ul class="tabs" ref="tabs">
-        <li class="tab col s3" v-for="item in list" :key="item.id">
-          <a :href="'#tab-' + item.id" class="active"> </a>
+        <li class="tab col s4" v-for="item in list" :key="item.id">
+          <a :href="'#tab-' + item.id">{{ item.title }}</a>
         </li>
       </ul>
     </div>
 
-    <div v-for="name in names" :key="name" id="test-swipe-1" class="col s12">
-      <slot :name="name"></slot>
+    <div
+      class="col s12"
+      v-for="item in list"
+      :key="item.id"
+      :id="'tab-' + item.id"
+    >
+      <slot :name="item.title"></slot>
     </div>
   </div>
 </template>
